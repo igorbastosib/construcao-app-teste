@@ -21,14 +21,14 @@ public class Usuario implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String idUsuario;
 	@Column(name = "login", nullable = false, length = 45)
-	private String login;
+	private String login; // Aqui não seria melhor LoginUsuario?
 	@Column(name = "senha", nullable = false, length = 45)
-	private String senha;
+	private String senha;// Aqui SenhaUsuario?
 	
 
 	// Construtores
 	public Usuario() {
-		super();
+		super(); //esta é uma variável de rotina?
 	}
 
 	// Getters e Setters
