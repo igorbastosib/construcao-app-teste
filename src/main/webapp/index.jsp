@@ -1,6 +1,6 @@
 <!-- Pagina de Login do site de Administracao -->
 
-<%@include file="../assets/includes/header.html"%>
+<%@include file="./assets/includes/header.html"%>
 
 <!-- Login Start -->
 <section id="admin" class="pfblock">

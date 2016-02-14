@@ -1,7 +1,7 @@
 <jsp:include page="/saas-admin/assets/includes/header.html"></jsp:include>
 <jsp:include page="/saas-admin/assets/includes/navbar.html"></jsp:include>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="admin.RelatorioAcesso"%>
+<%@ page import="admin.RelatorioPaginasMaisAcessadas"%>
 
 
 <!-- Relatorios Start -->
