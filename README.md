@@ -12,3 +12,5 @@ Na aba Main, na opcao Goals coloque: org.apache.tomcat.maven:tomcat7-maven-plugi
 Na aba Main, logo a baixo tem uma tabela, clique em Add e colque: maven.tomcat.port no primeiro campo e 9090 no segundo.
 
 Clique em Apply e depois em Run.
+
+O login e senha padrao para se conectar no site é admin admi
