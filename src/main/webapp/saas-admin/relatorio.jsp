@@ -16,7 +16,7 @@
 				<h3 class="panel-title">Relatório de Acesso</h3>
 			</div>
 			<div class="row">
-				<div class="container-fluid table-relatorios">
+				<div class="container-fluid table-relatorios-mais-acesso">
 					<table cellpadding="2" cellspacing="2" border="1">
 						<tr>
 							<th class="title-column">Página (URL)</th> 
@@ -26,6 +26,27 @@
 							<tr>
 								 <td class="tupla-element">${p.url}</td>  
 								<td class="tupla-element">${p.qtdAcessos}</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+			</div>
+			<div class="panel-heading">
+				<h3 class="panel-title">Últimas páginas acessadas</h3>
+			</div>
+			<div class="row">
+				<div class="container-fluid table-relatorios-acesso-real">
+					<table cellpadding="2" cellspacing="2" border="1">
+						<tr>
+							<th class="title-column">Página (URL)</th> 
+							<th class="title-column">IP</th>
+							<th class="title-column">Data/Hora</th>
+						</tr>
+						<c:forEach var="p" items="${relatorioAcessoReal}">
+							<tr>
+								 <td class="tupla-element">${p.url}</td>  
+								<td class="tupla-element">${p.ip}</td>
+								<td class="tupla-element">${p.dateTime}</td>
 							</tr>
 						</c:forEach>
 					</table>

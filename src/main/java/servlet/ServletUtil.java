@@ -53,12 +53,12 @@ public abstract class ServletUtil {
      * @return
      * @throws ParseException
      */
-	protected static Date stringToDateTime(String data) throws Exception {
+	protected static Date stringToDateTimeSQL(String data) throws Exception {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
         Date date = sdf.parse(data);
         return date;
     }
-
+	
 	/**
 	 * Converte o parameter para vazio "" se for nulo, pois vem de uma requisicao online
 	 * podendo ser nulo

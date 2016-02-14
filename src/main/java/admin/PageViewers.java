@@ -1,8 +1,12 @@
 package admin;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
+import javax.servlet.http.HttpServletRequest;
+
+import dao.PageViewersDAO;
 
 /**
  * Classe de representacao dos dados para geracao de relatorios
@@ -60,5 +64,16 @@ public class PageViewers {
 
 	public void setDateTime(Date dateTime) {
 		this.dateTime = dateTime;
+	}
+	
+	//Outros Metodos
+	/**
+	 * Busca no banco de dados as dez ultimas paginas acessadas
+	 * 
+	 * @param req
+	 */
+	public static List listarRelatorioAcessoReal() {
+		List<PageViewers> relatorioAcessoReal = PageViewersDAO.getInstance().dezUltimasPagAcessadas();
+		return relatorioAcessoReal;
 	}
 }

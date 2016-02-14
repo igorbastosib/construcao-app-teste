@@ -31,7 +31,7 @@ import dao.JpaUtil;
 import dao.PageViewersDAO;
 import dao.UsuarioDAO;
 import admin.PageViewers;
-import admin.RelatorioAcesso;
+import admin.RelatorioPaginasMaisAcessadas;
 import admin.Usuario;
 
 /**
@@ -58,7 +58,8 @@ public class AdminServlet extends HttpServlet {
 						req.setAttribute("comando", "usuarios");
 						forward(req, resp, "/UserServlet.saas");
 					} else if (comando.equals("relatorio")) {
-						listarRelatorio(req);
+						listarRelatorioMaiorAcesso(req);
+						listarRelatorioAcessoReal(req);
 						forward(req, resp, "./saas-admin/relatorio.jsp");
 					} else if (comando.equals("logout")) {
 						req.setAttribute("comando", "");
@@ -77,21 +78,34 @@ public class AdminServlet extends HttpServlet {
 	}
 
 	/**
-	 * Pega o relatorio de acesso e armazena em uma lista
+	 * Pega o relatorio de maior acesso e armazena em uma lista
 	 * 
 	 * @param req
 	 */
-	private void listarRelatorio(HttpServletRequest req) {
-		List<RelatorioAcesso> relatorioAcesso = PageViewersDAO.getInstance().geraRelatorioAcessos();
-		req.setAttribute("relatorioAcesso", relatorioAcesso);
+	private void listarRelatorioMaiorAcesso(HttpServletRequest req) {
+		req.setAttribute("relatorioAcesso", RelatorioPaginasMaisAcessadas.listarRelatorioMaiorAcesso());
+	}
+	
+	/**
+	 * Pega o relatorio de acesso real e armazena em uma lista
+	 * 
+	 * @param req
+	 */
+	private void listarRelatorioAcessoReal(HttpServletRequest req) {
+		req.setAttribute("relatorioAcessoReal", PageViewers.listarRelatorioAcessoReal());
 	}
 
+	/**
+	 * Persiste as informacoes de acesso aas paginas
+	 * @param req
+	 */
 	private void acessouURL(HttpServletRequest req) {
 		String url = ServletUtil.stringNuloParaVazio(req.getParameter("url"));
 		String ip = ServletUtil.stringNuloParaVazio(req.getParameter("ip"));;
 		String date = ServletUtil.stringNuloParaVazio(req.getParameter("dateTime"));
+		System.out.println("IP "+ip);
 		try {
-			Date dateTime = ServletUtil.stringToDateTime(date);//ServletUtil.stringToDateTime(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(new Date()));
+			Date dateTime = ServletUtil.stringToDateTimeSQL(date);//ServletUtil.stringToDateTime(new SimpleDateFormat("yyyy-mm-dd hh:mm:ss").format(new Date()));
 			PageViewers pageView = new PageViewers(url, ip, dateTime);
 			PageViewersDAO.getInstance().create(pageView);
 		}catch (Exception e){

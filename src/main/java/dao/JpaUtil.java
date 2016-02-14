@@ -4,7 +4,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 
-public class JpaUtil {
+public abstract class JpaUtil {
 	private static final ThreadLocal<EntityManager> threadLocal = new ThreadLocal<EntityManager>();
 	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("saasDataBase");
 
